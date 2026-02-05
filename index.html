@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rose Day 🌹</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffe4ec, #fff7f9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+      background: white;
+      width: 320px;
+      padding: 28px 22px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+      animation: fadeIn 1s ease;
+    }
+
+    h1 {
+      font-size: 22px;
+      color: #e11d48;
+      margin-bottom: 10px;
+    }
+
+    .rose {
+      font-size: 42px;
+      margin: 12px 0;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .rose:hover {
+      transform: scale(1.1);
+    }
+
+    p {
+      font-size: 15px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .options button {
+      margin: 8px 6px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid #e11d48;
+      background: transparent;
+      color: #e11d48;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .options button:hover {
+      background: #e11d48;
+      color: white;
+    }
+
+    .hidden {
+      display: none;
+      margin-top: 14px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .final {
+      margin-top: 16px;
+      font-size: 15px;
+      color: #333;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Happy Rose Day</h1>
+
+    <div class="rose" onclick="roseClick()">🌹</div>
+
+    <p id="intro">
+      This rose is interactive.<br>
+      Just like random conversations 😄
+    </p>
+
+    <div class="options">
+      <button onclick="choose('smile')">🙂</button>
+      <button onclick="choose('bakwaas')">😜</button>
+      <button onclick="choose('calm')">🌿</button>
+    </div>
+
+    <div id="response" class="hidden"></div>
+
+    <div id="final" class="hidden final">
+      That’s it.<br>
+      No big meaning — just a small Rose Day hello 🌸
+    </div>
+  </div>
+
+  <script>
+    let roseTapped = false;
+
+    function roseClick() {
+      if (!roseTapped) {
+        document.getElementById("intro").innerText =
+          "Okay okay 😅 you found the secret tap.";
+        roseTapped = true;
+      }
+    }
+
+    function choose(type) {
+      const response = document.getElementById("response");
+      response.classList.remove("hidden");
+
+      if (type === 'smile') {
+        response.innerText = "This felt like a smile moment 🙂";
+      } else if (type === 'bakwaas') {
+        response.innerText = "Certified bakwaas energy detected 😜";
+      } else {
+        response.innerText = "Calm, simple, comfortable vibes 🌿";
+      }
+
+      document.getElementById("final").classList.remove("hidden");
+    }
+  </script>
+
+</body>
+</html>
